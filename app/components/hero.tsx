@@ -49,7 +49,7 @@ export default function Hero() {
           className="absolute inset-0 z-0"
         >
           {/* Enhanced Bottom-Heavy Gradient for readability at the bottom */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#020420] via-[#020420]/20 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#020420] via-[#020420]/20 to-transparent z-10" />
           <div className="absolute inset-0 bg-[#070B7F]/5 z-10" /> 
           <img
             src={slides[index].image}
