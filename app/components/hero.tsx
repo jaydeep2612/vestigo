@@ -18,7 +18,7 @@ const slides = [
     desc: "Tailored insurance solutions built by deeply understanding your specific industry needs."
   },
   {
-    image: "https://images.unsplash.com/photo-1454165833767-027ffea7028c?auto=format&fit=crop&q=80&w=2000",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=2000",
     tag: "📈 Asset Growth",
     title: "Stability for ",
     highlight: "Your Future.",
