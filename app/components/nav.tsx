@@ -104,7 +104,7 @@ export default function Header() {
         >
           {/* LOGO */}
           <Link href="/">
-            <Image src="/logo.svg" alt="Vestigo" width={140} height={40} />
+            <Image src="/logo.png" alt="Vestigo" width={140} height={40} />
           </Link>
 
           {/* ================= DESKTOP NAV ================= */}
