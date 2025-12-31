@@ -69,14 +69,16 @@ export default function Nav() {
 
   return (
     <nav 
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+      className={`fixed  rounded-full z-50 transition-all duration-500 
+        top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-7x
+        ${
         isScrolled 
           ? "bg-white/95 backdrop-blur-md shadow-[0_2px_15px_-3px_rgba(7,11,127,0.07)] border-b border-gray-100" 
           : "bg-white border-b border-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20 items-center">
+        <div className="flex justify-between h-16 items-center">
           
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
             <Link href="/" className="flex items-center gap-2 group">
@@ -92,7 +94,7 @@ export default function Nav() {
                 {item.links ? (
                   <>
                     <button className="flex items-center px-5 py-8 text-xs font-black uppercase tracking-widest text-slate-600 hover:text-[#070B7F] transition-all duration-300">
-                      {item.label}
+                      <Link href={item.href}>{item.label}</Link>
                       <svg className="ml-1.5 w-3 h-3 opacity-40 transition-transform duration-300 group-hover:rotate-180 group-hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
                       </svg>
