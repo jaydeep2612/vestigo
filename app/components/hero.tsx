@@ -18,7 +18,7 @@ const slides = [
     desc: "Tailored insurance solutions built by deeply understanding your specific industry needs."
   },
   {
-    image: "https://images.unsplash.com/photo-1454165833767-027ffea7028c?auto=format&fit=crop&q=80&w=2000",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=2000",
     tag: "📈 Asset Growth",
     title: "Stability for ",
     highlight: "Your Future.",
@@ -49,8 +49,8 @@ export default function Hero() {
           className="absolute inset-0 z-0"
         >
           {/* Enhanced Bottom-Heavy Gradient for readability at the bottom */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#020420] via-[#020420]/40 to-transparent z-10" />
-          <div className="absolute inset-0 bg-[#070B7F]/10 z-10" /> 
+          <div className="absolute inset-0 bg-gradient-to-r from-[#020420] via-[#020420]/20 to-transparent z-10" />
+          <div className="absolute inset-0 bg-[#070B7F]/5 z-10" /> 
           <img
             src={slides[index].image}
             alt="Background"
