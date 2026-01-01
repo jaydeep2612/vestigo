@@ -293,7 +293,7 @@ export default function Header() {
                 onClick={() => setIsMobileOpen(false)}
                 className="w-full bg-[#1C2A7D] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2"
               >
-                <PhoneCall size={18} /> CALL US NOW
+                <PhoneCall size={18} /> CALL US 
               </Link>
             </div>
           </motion.div>
