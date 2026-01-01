@@ -42,14 +42,14 @@ export default function Hero() {
       <AnimatePresence mode="wait">
         <motion.div
           key={`bg-${index}`}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
+          initial={{ opacity: 0.1, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1.2 }}
+          exit={{ opacity: 0.2 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="absolute inset-0 z-0"
         >
           {/* Enhanced Bottom-Heavy Gradient for readability at the bottom */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#020420] via-[#020420]/20 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#020420] via-[#020420]/20 to-transparent z-10" />
           <div className="absolute inset-0 bg-[#070B7F]/5 z-10" /> 
           <img
             src={slides[index].image}

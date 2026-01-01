@@ -1,13 +1,33 @@
 "use client";
-import React from 'react';
+
+import React, { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from "framer-motion";
-import Link from 'next/link';
+import { BlogCard, type Blog } from './blog';
 
 export default function BlogsHub() {
   const brandBlue = "#070B7F";
   const { scrollYProgress } = useScroll();
 
-  // Parallax for the Knowledge Hub Hero
+  // --- Data Fetching Logic ---
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const res = await fetch('https://happy.techstrota.com/api/blogs');
+        const data = await res.json();
+        setBlogs(Array.isArray(data) ? data : []);
+      } catch (error) {
+        console.error("Failed to fetch blogs:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBlogs();
+  }, []);
+
+  // --- Animation Transforms ---
   const yHero = useTransform(scrollYProgress, [0, 0.4], [0, -80]);
   const heroScale = useTransform(scrollYProgress, [0, 0.4], [1, 1.05]);
 
@@ -16,27 +36,6 @@ export default function BlogsHub() {
     { name: "Insurance Insights", icon: "📑", topics: ["Policy Understanding", "Claims Best Practices", "Coverage Optimization"] },
     { name: "Industry Updates", icon: "🌐", topics: ["Regulatory Changes", "Market Trends", "Compliance Requirements"] },
     { name: "Financial Planning", icon: "📈", topics: ["Asset Protection", "Financial Security", "Employee Benefits"] },
-  ];
-
-  const featuredBlogs = [
-    { 
-      title: "Sustainable Risk Management: The ESG Perspective", 
-      cat: "Risk Management", 
-      img: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070",
-      date: "Dec 30, 2025" 
-    },
-    { 
-      title: "The Importance of Cyber Insurance in Today’s Digital Economy", 
-      cat: "Insurance Insights", 
-      img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070",
-      date: "Dec 22, 2025" 
-    },
-    { 
-      title: "Regulatory Compliance: What Businesses Need to Know", 
-      cat: "Industry Updates", 
-      img: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070",
-      date: "Dec 15, 2025" 
-    },
   ];
 
   return (
@@ -107,41 +106,16 @@ export default function BlogsHub() {
             </h2>
             <div className="h-[2px] w-24 bg-slate-100 mb-4 hidden lg:block" />
           </div>
-
+          
+          {/* Grid wrapper added back to prevent layout breaking */}
           <div className="grid lg:grid-cols-3 gap-12">
-            {featuredBlogs.map((blog, i) => (
-              <motion.article 
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group cursor-pointer"
-              >
-                <div className="relative h-[400px] rounded-[3.5rem] overflow-hidden mb-8 shadow-2xl">
-                  <img 
-                    src={blog.img} 
-                    className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" 
-                    alt={blog.title} 
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#070B7F]/80 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
-                  <div className="absolute top-8 left-8">
-                    <span className="px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-white text-[10px] font-black uppercase tracking-widest">
-                      {blog.cat}
-                    </span>
-                  </div>
-                </div>
-                <div className="px-4">
-                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4 block">{blog.date}</span>
-                  <h3 className="text-2xl font-black uppercase tracking-tighter leading-tight group-hover:text-[#070B7F] transition-colors mb-6">
-                    {blog.title}
-                  </h3>
-                  <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-slate-900 opacity-0 group-hover:opacity-100 transition-all transform translate-x-[-10px] group-hover:translate-x-0">
-                    Read Article <div className="h-[1px] w-12" style={{ backgroundColor: brandBlue }} />
-                  </div>
-                </div>
-              </motion.article>
-            ))}
+            {loading ? (
+              <p>Loading insights...</p>
+            ) : (
+              blogs.map((item, i) => (
+                <BlogCard key={item.id} blog={item} index={i} />
+              ))
+            )}
           </div>
         </div>
       </section>
@@ -185,7 +159,6 @@ export default function BlogsHub() {
           </motion.div>
         </div>
       </section>
-
     </main>
   );
 }

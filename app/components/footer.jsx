@@ -1,150 +1,163 @@
-"use client";
-import Link from "next/link";
-import { motion } from "framer-motion";
+'use client';
 
-export default function Footer() {
-  const currentYear = new Date().getFullYear();
+import Link from 'next/link';
+import Image from 'next/image';
+import { Facebook, Instagram, Linkedin, Globe, Mail, Phone, MapPin } from 'lucide-react';
 
-  const containerVariants = {
-    initial: { opacity: 0, y: 20 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.8, staggerChildren: 0.1 }
-  };
-
-  const itemVariants = {
-    initial: { opacity: 0, y: 10 },
-    whileInView: { opacity: 1, y: 0 }
-  };
+export default function SlimFooter() {
+  const socialLinks = [
+    { name: 'Facebook', icon: <Facebook size={16} />, href: 'https://facebook.com' },
+    { name: 'Instagram', icon: <Instagram size={16} />, href: 'https://instagram.com' },
+    { name: 'LinkedIn', icon: <Linkedin size={16} />, href: 'https://linkedin.com' },
+    { name: 'Google', icon: <Globe size={16} />, href: 'https://google.com' },
+  ];
 
   return (
-    <footer className="bg-white dark:bg-[#020420] border-t border-slate-100 dark:border-white/5 relative overflow-hidden transition-colors duration-300">
-      {/* Decorative background glow - Uses Logo Blue */}
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#070B7F]/5 dark:bg-[#070B7F]/10 blur-[100px] rounded-full pointer-events-none" />
+    /* 1. PARENT CONTAINER: Background flows to the bottom */
+    <div className="relative w-full bg-[url('/footer.jpeg')] bg-cover bg-center bg-no-repeat overflow-hidden">
+      
+      {/* 2. GRADIENT OVERLAY: Transparent top to solid dark bottom */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-[#0B1120]/85 to-[#0B1120] z-0" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 relative z-10">
-        
-        {/* Top Section: Newsletter Lead Gen - Background changed to Brand-Compliant Slate-950 */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-16 p-8 lg:p-12 rounded-[3rem] bg-[#0A0E2E] dark:bg-[#070B7F]/20 dark:border dark:border-white/10 text-white flex flex-col lg:flex-row items-center justify-between gap-8"
-        >
-          <div className="text-center lg:text-left">
-            <h3 className="text-2xl lg:text-3xl font-black tracking-tight mb-2">Stay ahead of industry risks.</h3>
-            <p className="text-slate-400 dark:text-slate-300 font-medium">Get monthly insights from our risk assessment experts.</p>
-          </div>
-          <div className="flex w-full lg:w-auto gap-2">
-            <input 
-              type="email" 
-              placeholder="Enter your work email" 
-              className="bg-white/10 border border-white/10 px-6 py-4 rounded-2xl w-full lg:w-80 focus:outline-none focus:ring-2 focus:ring-[#070B7F] transition-all"
-            />
-            {/* Button changed to Logo Blue */}
-            <button className="bg-[#070B7F] hover:bg-[#05085C] text-white font-bold px-8 py-4 rounded-2xl transition-all active:scale-95 whitespace-nowrap shadow-xl">
-              Join Now
-            </button>
-          </div>
-        </motion.div>
-
-        <motion.div 
-          variants={containerVariants}
-          initial="initial"
-          whileInView="whileInView"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8"
-        >
-          
-          {/* Brand Column */}
-          <motion.div variants={itemVariants} className="space-y-6">
-            <Link href="/" className="inline-block group">
-               <img src="./logo.png" alt="Logo" className="h-14 w-auto dark:brightness-150 drop-shadow-[0_6px_14px_rgba(7,11,127,0.65)]"/>
-            </Link>
-            <p className="text-slate-500 dark:text-gray-400 text-sm leading-relaxed font-medium">
-              Vestigāre — We track, trace, and search out risks to build a safer future for global enterprises through intelligent insurance tech.
-            </p>
-            <div className="flex space-x-3">
-              {['LinkedIn', 'Twitter', 'YouTube'].map((social) => (
-                <motion.div 
-                  key={social}
-                  /* Social Hover Background changed to Logo Blue */
-                  whileHover={{ y: -4, backgroundColor: '#070B7F', color: '#fff' }}
-                  className="w-10 h-10 bg-slate-100 dark:bg-white/5 rounded-xl flex items-center justify-center text-slate-600 dark:text-gray-400 cursor-pointer transition-colors"
-                >
-                  <span className="sr-only">{social}</span>
-                  <div className="w-5 h-5 bg-current mask-icon" />
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Quick Links Column */}
-          <motion.div variants={itemVariants} className="lg:pl-8">
-            <h4 className="text-slate-900 dark:text-white font-black uppercase text-xs tracking-[0.2em] mb-6">Organization</h4>
-            <ul className="space-y-4">
-              {["Who we are", "Why us", "Our Team", "Blog", "Careers"].map((link) => (
-                <li key={link}>
-                  {/* Link Hover text changed to Logo Blue */}
-                  <Link href="#" className="text-slate-500 dark:text-gray-400 hover:text-[#070B7F] dark:hover:text-[#4F55FF] text-sm font-bold transition-all hover:pl-2">
-                    {link}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Solutions Column */}
-          <motion.div variants={itemVariants}>
-            <h4 className="text-slate-900 dark:text-white font-black uppercase text-xs tracking-[0.2em] mb-6">Expertise</h4>
-            <ul className="space-y-4">
-              {["Commercial Insurance", "Employee Benefits", "Life Insurance", "Green Insurance", "Audit & Risk"].map((link) => (
-                <li key={link}>
-                  <Link href="#" className="text-slate-500 dark:text-gray-400 hover:text-[#070B7F] dark:hover:text-[#4F55FF] text-sm font-bold transition-all hover:pl-2">
-                    {link}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Contact Column */}
-          <motion.div variants={itemVariants}>
-            <h4 className="text-slate-900 dark:text-white font-black uppercase text-xs tracking-[0.2em] mb-6">Global Office</h4>
-            <div className="space-y-6">
-              <div className="group cursor-pointer">
-                {/* Heading text changed to Logo Blue */}
-                <p className="text-xs font-black text-[#070B7F] dark:text-[#4F55FF] uppercase mb-1">HQ Address</p>
-                <p className="text-slate-500 dark:text-gray-400 text-sm font-bold leading-snug group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
-                  123 Business Way, Financial District<br/>New York, NY 10004
-                </p>
-              </div>
-              <div className="pt-4 border-t border-slate-100 dark:border-white/5">
-                <p className="text-slate-500 dark:text-gray-400 text-sm font-bold italic">Support: +1 (800) VESTIGO</p>
-              </div>
-            </div>
-          </motion.div>
-
-        </motion.div>
-
-        {/* Bottom Bar */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="mt-20 pt-8 border-t border-slate-100 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-6"
-        >
-          <p className="text-slate-400 dark:text-gray-500 text-[11px] font-bold uppercase tracking-widest">
-            © {currentYear} INSURECORP Global Solutions.
+      {/* 3. CTA SECTION: Reduced height to 200px to save space */}
+      <section className="relative z-10 w-full h-[200px] flex items-center justify-center text-center px-6">
+        <div className="max-w-4xl">
+          <h2 className="text-white text-1xl md:text-3xl font-black uppercase tracking-tighter mb-2 leading-tight">
+            Protect your business with the <br /> 
+            <span className="text-[#4169E1]">right insurance strategy</span>
+          </h2>
+          <p className="text-white/80 text-sm mb-4 font-light">
+            Schedule a no-obligation consultation with our experts today
           </p>
-          <div className="flex flex-wrap justify-center gap-8">
-            {["Privacy Policy", "Terms of Service", "Cookie Settings"].map((legal) => (
-              <Link key={legal} href="#" className="text-slate-400 dark:text-gray-500 hover:text-slate-900 dark:hover:text-white text-[11px] font-black uppercase tracking-widest transition-colors">
-                {legal}
-              </Link>
-            ))}
+          <button className="bg-[#4169E1] hover:bg-white hover:text-[#0B1120] text-white font-bold py-2.5 px-8 rounded-lg transition-all uppercase text-[10px] tracking-widest shadow-xl">
+            Request Consultation
+          </button>
+        </div>
+      </section>
+
+      {/* 4. FOOTER: Minimal vertical padding (py-4) to make it slim */}
+      <footer className="relative z-10 bg-transparent py-4 text-slate-400">
+        <div className="max-w-7xl mx-auto px-8">
+          
+          {/* Main Grid: Using gap-4 for a tight vertical profile */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 items-start">
+            
+            {/* Logo & About */}
+            <div className="lg:col-span-1 space-y-2">
+              <Image
+                src="/logo.svg"
+                alt="Vestigo Logo"
+                width={100}
+                height={28}
+                className="invert opacity-90"
+              />
+              <p className="text-[11px] leading-tight text-slate-300">
+                Innovative digital insurance solutions protecting businesses worldwide.
+              </p>
+              <div className="flex gap-2">
+                {socialLinks.map((social) => (
+                  <Link 
+                    key={social.name} 
+                    href={social.href}
+                    className="w-7 h-7 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-white transition-all border border-white/10"
+                  >
+                    {social.icon}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Company: Smaller Title font (11px) */}
+            <div className="lg:col-span-1">
+              <h3 className="text-white font-bold text-[11px] uppercase tracking-[0.2em] mb-3 relative inline-block">
+                Company
+                <span className="absolute -bottom-1 left-0 w-4 h-0.5 bg-blue-600"></span>
+              </h3>
+              <ul className="space-y-1 text-[11px]">
+                <li><Link href="/company/whoweare" className="hover:text-white transition-all">Who We Are</Link></li>
+                <li><Link href="/company/whyus" className="hover:text-white transition-all">Why Us</Link></li>
+                <li><Link href="/company/ourteam" className="hover:text-white transition-all">Our Team</Link></li>
+                <li><Link href="/company/ourpartners" className="hover:text-white transition-all">Our Partners</Link></li>
+              </ul>
+            </div>
+
+            {/* Industries: 4 Column layout preserved but spaced tighter */}
+            <div className="lg:col-span-2 ">
+              <h3 className="text-white  font-bold text-[11px] uppercase tracking-[0.2em] mb-3 relative inline-block">
+                Industries
+                <span className="absolute -bottom-1 left-0 w-4 h-0.5 bg-blue-600"></span>
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-2 text-[10px]">
+                <ul className="space-y-1">
+                  <li><Link href="#" className="hover:text-white truncate block">Auto Mobile</Link></li>
+                  <li><Link href="#" className="hover:text-white block">BFSI</Link></li>
+                  <li><Link href="#" className="hover:text-white truncate block">Chem/Pharma</Link></li>
+                  <li><Link href="#" className="hover:text-white block">E-Com</Link></li>
+                </ul>
+                <ul className="space-y-1">
+                  <li><Link href="#" className="hover:text-white block">Engineering</Link></li>
+                  <li><Link href="#" className="hover:text-white truncate block">Green Energy</Link></li>
+                  <li><Link href="#" className="hover:text-white block">Hospital</Link></li>
+                  <li><Link href="#" className="hover:text-white block">Hospitality</Link></li>
+                </ul>
+                <ul className="space-y-1">
+                  <li><Link href="#" className="hover:text-white block">IT & Tech</Link></li>
+                  <li><Link href="#" className="hover:text-white block">Packaging</Link></li>
+                  <li><Link href="#" className="hover:text-white truncate block">Shipping</Link></li>
+                  <li><Link href="#" className="hover:text-white block">SME/MSME</Link></li>
+                </ul>
+                <ul className="space-y-1">
+                  <li><Link href="#" className="hover:text-white truncate block">Paper Mills</Link></li>
+                  <li><Link href="#" className="hover:text-white block">Plastic</Link></li>
+                  <li><Link href="#" className="hover:text-white block">TextTile</Link></li>
+                  <li><Link href="#" className="hover:text-white truncate block">Wood</Link></li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Services */}
+            <div className="lg:col-span-1">
+              <h3 className="text-white font-bold text-[11px] uppercase tracking-[0.2em] mb-3 relative inline-block">
+                Services
+                <span className="absolute -bottom-1 left-0 w-4 h-0.5 bg-blue-600"></span>
+              </h3>
+              <ul className="space-y-1 text-[11px]">
+                <li><Link href="/solutions" className="hover:text-white transition-all block">Risk Solutions</Link></li>
+                <li><Link href="/industries" className="hover:text-white transition-all block">Industries</Link></li>
+                <li><Link href="/blogs" className="hover:text-white transition-all block">Insights</Link></li>
+                <li><Link href="/careers" className="hover:text-white transition-all block">Careers</Link></li>
+              </ul>
+            </div>
+
+            {/* Contact Us */}
+            <div className="lg:col-span-1">
+              <h3 className="text-white font-bold text-[11px] uppercase tracking-[0.2em] mb-3 relative inline-block">
+                Contact
+                <span className="absolute -bottom-1 left-0 w-4 h-0.5 bg-blue-600"></span>
+              </h3>
+              <ul className="space-y-2 text-[11px]">
+                <li className="flex items-center gap-2 group">
+                    <Phone size={10} className="text-blue-400" />
+                    <span className="text-slate-300 group-hover:text-white">+1 234 567 890</span>
+                </li>
+                <li className="flex items-center gap-2 group">
+                    <Mail size={10} className="text-blue-400" />
+                    <span className="text-slate-300 group-hover:text-white truncate">info@vestigo.com</span>
+                </li>
+              </ul>
+            </div>
           </div>
-        </motion.div>
-      </div>
-    </footer>
+
+          {/* Bottom Bar: Tight mt-4 and pt-3 */}
+          <div className="mt-4 pt-3 border-t border-white/10 flex flex-col md:flex-row justify-between text-slate-500 items-center gap-2 text-[9px] uppercase tracking-widest font-bold">
+            <p>&copy; {new Date().getFullYear()} VESTIGO RISK SOLUTIONS.</p>
+            <div className="flex gap-4">
+              <Link href="/privacy" className="hover:text-white">Privacy</Link>
+              <Link href="/terms" className="hover:text-white">Terms</Link>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 }
