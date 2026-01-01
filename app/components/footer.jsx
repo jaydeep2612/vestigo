@@ -37,7 +37,7 @@ export default function SlimFooter() {
 
       {/* 4. FOOTER: Minimal vertical padding (py-4) to make it slim */}
       <footer className="relative z-10 bg-transparent py-4 text-slate-400">
-        <div className="max-w-7xl mx-auto px-8">
+        <div className="max-w-7xl mx-auto px-1">
           
           {/* Main Grid: Using gap-4 for a tight vertical profile */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 items-start">
@@ -45,13 +45,13 @@ export default function SlimFooter() {
             {/* Logo & About */}
             <div className="lg:col-span-1 space-y-2">
               <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt="Vestigo Logo"
                 width={100}
                 height={28}
                 className="invert opacity-90"
               />
-              <p className="text-[11px] leading-tight text-slate-300">
+              <p className="text-[14px] leading-tight text-slate-300">
                 Innovative digital insurance solutions protecting businesses worldwide.
               </p>
               <div className="flex gap-2">
@@ -69,11 +69,11 @@ export default function SlimFooter() {
 
             {/* Company: Smaller Title font (11px) */}
             <div className="lg:col-span-1">
-              <h3 className="text-white font-bold text-[11px] uppercase tracking-[0.2em] mb-3 relative inline-block">
+              <h3 className="text-white font-bold text-[15px] uppercase tracking-[0.2em] mb-3 relative inline-block">
                 Company
                 <span className="absolute -bottom-1 left-0 w-4 h-0.5 bg-blue-600"></span>
               </h3>
-              <ul className="space-y-1 text-[11px]">
+              <ul className="space-y-1 mt-1 text-[15px]">
                 <li><Link href="/company/whoweare" className="hover:text-white transition-all">Who We Are</Link></li>
                 <li><Link href="/company/whyus" className="hover:text-white transition-all">Why Us</Link></li>
                 <li><Link href="/company/ourteam" className="hover:text-white transition-all">Our Team</Link></li>
@@ -83,30 +83,30 @@ export default function SlimFooter() {
 
             {/* Industries: 4 Column layout preserved but spaced tighter */}
             <div className="lg:col-span-2 ">
-              <h3 className="text-white  font-bold text-[11px] uppercase tracking-[0.2em] mb-3 relative inline-block">
+              <h3 className="text-white  font-bold text-[15px] uppercase tracking-[0.2em] mb-3 relative inline-block">
                 Industries
                 <span className="absolute -bottom-1 left-0 w-4 h-0.5 bg-blue-600"></span>
               </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-2 text-[10px]">
-                <ul className="space-y-1">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-2 text-[14px]">
+                <ul className="space-y-1 mt-1">
                   <li><Link href="#" className="hover:text-white truncate block">Auto Mobile</Link></li>
                   <li><Link href="#" className="hover:text-white block">BFSI</Link></li>
                   <li><Link href="#" className="hover:text-white truncate block">Chem/Pharma</Link></li>
                   <li><Link href="#" className="hover:text-white block">E-Com</Link></li>
                 </ul>
-                <ul className="space-y-1">
+                <ul className="space-y-1 mt-1">
                   <li><Link href="#" className="hover:text-white block">Engineering</Link></li>
                   <li><Link href="#" className="hover:text-white truncate block">Green Energy</Link></li>
                   <li><Link href="#" className="hover:text-white block">Hospital</Link></li>
                   <li><Link href="#" className="hover:text-white block">Hospitality</Link></li>
                 </ul>
-                <ul className="space-y-1">
+                <ul className="space-y-1 mt-1">
                   <li><Link href="#" className="hover:text-white block">IT & Tech</Link></li>
                   <li><Link href="#" className="hover:text-white block">Packaging</Link></li>
                   <li><Link href="#" className="hover:text-white truncate block">Shipping</Link></li>
                   <li><Link href="#" className="hover:text-white block">SME/MSME</Link></li>
                 </ul>
-                <ul className="space-y-1">
+                <ul className="space-y-1 mt-1">
                   <li><Link href="#" className="hover:text-white truncate block">Paper Mills</Link></li>
                   <li><Link href="#" className="hover:text-white block">Plastic</Link></li>
                   <li><Link href="#" className="hover:text-white block">TextTile</Link></li>
@@ -116,12 +116,12 @@ export default function SlimFooter() {
             </div>
 
             {/* Services */}
-            <div className="lg:col-span-1">
-              <h3 className="text-white font-bold text-[11px] uppercase tracking-[0.2em] mb-3 relative inline-block">
+            <div className="lg:col-span-1 ">
+              <h3 className="text-white font-bold text-[15px] uppercase tracking-[0.2em] mb-3 relative inline-block">
                 Services
                 <span className="absolute -bottom-1 left-0 w-4 h-0.5 bg-blue-600"></span>
               </h3>
-              <ul className="space-y-1 text-[11px]">
+              <ul className="space-y-1 text-[15px] mt-1">
                 <li><Link href="/solutions" className="hover:text-white transition-all block">Risk Solutions</Link></li>
                 <li><Link href="/industries" className="hover:text-white transition-all block">Industries</Link></li>
                 <li><Link href="/blogs" className="hover:text-white transition-all block">Insights</Link></li>
@@ -131,11 +131,11 @@ export default function SlimFooter() {
 
             {/* Contact Us */}
             <div className="lg:col-span-1">
-              <h3 className="text-white font-bold text-[11px] uppercase tracking-[0.2em] mb-3 relative inline-block">
+              <h3 className="text-white font-bold text-[15px] uppercase tracking-[0.2em] mb-3 relative inline-block">
                 Contact
                 <span className="absolute -bottom-1 left-0 w-4 h-0.5 bg-blue-600"></span>
               </h3>
-              <ul className="space-y-2 text-[11px]">
+              <ul className="space-y-2 text-[15px] mt-1">
                 <li className="flex items-center gap-2 group">
                     <Phone size={10} className="text-blue-400" />
                     <span className="text-slate-300 group-hover:text-white">+1 234 567 890</span>
