@@ -49,7 +49,7 @@ export default function SlimFooter() {
                 alt="Vestigo Logo"
                 width={100}
                 height={28}
-                className="invert opacity-90"
+                className=""
               />
               <p className="text-[14px] leading-tight text-slate-300">
                 Innovative digital insurance solutions protecting businesses worldwide.
