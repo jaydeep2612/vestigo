@@ -15,7 +15,7 @@ export default function BlogsHub() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await fetch('https://happy.techstrota.com/api/blogs');
+        const res = await fetch('http://127.0.0.1:8000/api/posts');
         const data = await res.json();
         setBlogs(Array.isArray(data) ? data : []);
       } catch (error) {
